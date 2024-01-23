@@ -11,5 +11,5 @@ name: SSH into servers and create ssh-test.txt
     - name: Create ssh-test.txt file
       ansible.builtin.copy:
         content: "This is a test file created by Ansible.\n"
-        dest: "/home/scnxops/ssh-test.txt"
+        dest: "/home/ubuntu/ssh-test.txt"
       delegate_to: "{{ inventory_hostname }}"
