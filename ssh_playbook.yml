@@ -1,0 +1,15 @@
+name: SSH into servers and create ssh-test.txt
+  hosts: eagles
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Display server information
+      debug:
+        var: inventory_hostname
+
+    - name: Create ssh-test.txt file
+      ansible.builtin.copy:
+        content: "This is a test file created by Ansible.\n"
+        dest: "/home/scnxops/ssh-test.txt"
+      delegate_to: "{{ inventory_hostname }}"
